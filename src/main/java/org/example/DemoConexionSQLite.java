@@ -23,8 +23,5 @@ public class DemoConexionSQLite{
         }catch (SQLException sqle){
             sqle.printStackTrace();
         }
-
-
-
     }
 }

@@ -82,7 +82,7 @@ public class ModeloTablaLibro implements TableModel {
 
     @Override
     public void setValueAt(Object o, int rowIndex, int columnIndex) {
-        switch (columnIndex){
+        switch (columnIndex) {
             case 0:
                 //datos.get(rowIndex).setId();
                 break;
@@ -106,14 +106,30 @@ public class ModeloTablaLibro implements TableModel {
     public void removeTableModelListener(TableModelListener l) {
 
     }
-    public void cargarDatos(){
+
+    public void cargarDatos() {
         try {
             ArrayList<Libro> tirar = ldao.obtenerTodo();
             System.out.println(tirar);
             datos = ldao.obtenerTodo();
-        }catch (SQLException sqle){
+        } catch (SQLException sqle) {
             System.out.println(sqle.getMessage());
         }
 
+    }
+
+    public boolean agregarLibro(Libro libro) {
+        boolean resultado = false;
+        try {
+            if (ldao.insertar(libro)) {
+                datos.add(libro);
+                resultado = true;
+            } else {
+                resultado = false;
+            }
+        } catch (SQLException sqle) {
+            System.out.println(sqle.getMessage());
+        }
+        return resultado;
     }
 }

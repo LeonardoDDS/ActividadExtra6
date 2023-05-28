@@ -1,4 +1,4 @@
-package org.example;
+package org.example.Eliminada;
 
 import java.sql.*;
 
